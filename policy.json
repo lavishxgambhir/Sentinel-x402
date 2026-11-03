@@ -1,0 +1,65 @@
+{
+  "version": 2,
+  "requirePermit": true,
+  "walletAddress": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "allowedSchemes": [
+    "exact"
+  ],
+  "allowedNetworks": [
+    "eip155:84532"
+  ],
+  "allowedAssets": {
+    "eip155:84532": [
+      "0x036cbd53842c5426634e7929541ec2318f3dcf7e"
+    ]
+  },
+  "maxPerPayment": "100000",
+  "dailyBudget": "1000000",
+  "maxTimeoutSeconds": 120,
+  "merchants": {
+    "api.safe.test": {
+      "name": "Aperture Data",
+      "payTo": [
+        "0x1111111111111111111111111111111111111111",
+        "0x2222222222222222222222222222222222222222"
+      ],
+      "maxAmount": "50000",
+      "allowedPaths": [
+        "/premium-data",
+        "/weather",
+        "/market-data"
+      ]
+    }
+  },
+  "intentPermitTtlSeconds": 300,
+  "allowedPaymentFlows": [
+    "authorization"
+  ],
+  "risk": {
+    "blockedRecipients": [
+      "0x7777777777777777777777777777777777777777"
+    ],
+    "watchRecipients": [],
+    "reviewNewRecipients": false,
+    "maxPaymentsPerMinute": 20,
+    "closure": {
+      "enabled": true,
+      "source": "seeded-demo-graph",
+      "maxHops": 3,
+      "edges": [
+        {
+          "from": "0x2222222222222222222222222222222222222222",
+          "to": "0x3333333333333333333333333333333333333333"
+        },
+        {
+          "from": "0x3333333333333333333333333333333333333333",
+          "to": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ]
+    },
+    "note": "Demo/offline policy only. Production sanctions screening should use an official/current source such as OFAC SLS or a regulated provider."
+  },
+  "allowedAssetTransferMethods": [
+    "eip3009"
+  ]
+}

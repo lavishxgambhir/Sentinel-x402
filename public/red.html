@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a09">
+  <title>Red console — KCC Sentinel</title>
+  <link rel="stylesheet" href="/app.css">
+  <link rel="stylesheet" href="/console.css">
+</head>
+<body class="kcc-console">
+  <nav class="nav" aria-label="Main navigation">
+    <div class="navin">
+      <a class="brand" href="/" aria-label="KCC Sentinel home"><span class="mark" aria-hidden="true"></span><span>KCC</span><em>/</em><span class="brandProduct">Sentinel</span></a>
+      <div class="navlinks"><a href="/red" aria-current="page">Red</a><a href="/blue">Blue</a><a href="/judge">Judge</a></div>
+      <span class="navmeta">Red / <span id="connectionState" class="connectionState" data-state="connecting">Connecting</span></span>
+    </div>
+  </nav>
+
+  <main class="shell">
+    <div class="topbar">
+      <div><span class="researchEyebrow">Red / Controlled attack lab</span><h1>Change the payment terms.</h1><p>Start from the merchant’s original HTTP 402 offer. Mutate one field, submit it, and compare Sentinel’s decision with the referee’s server-held baseline.</p></div>
+      <div class="scoreCompact"><span>Round <b id="round">0</b></span><i aria-hidden="true"></i><span>Red <b id="redScore">0</b></span><i aria-hidden="true"></i><span>Blue <b id="blueScore">0</b></span></div>
+    </div>
+
+    <div class="researchBanner"><div><b>Simulation only</b><span>No wallet signature, fund transfer, or external target is involved.</span></div><span id="capSummary" class="researchStat">Preparing tests</span></div>
+    <div id="trainingModeNotice" class="trainingNotice">Training fixture: secure permit binding is active.</div>
+
+    <div class="dashboard">
+      <section class="panel" aria-label="Attack builder">
+        <div class="panelSection">
+          <div class="panelhead"><div class="sectionLabel"><span>01</span><h2>Merchant baseline</h2></div><button id="fresh" class="btn secondary" type="button">Refresh baseline</button></div>
+          <p id="challengeStatus" class="subtle">Fetching challenge…</p>
+          <div id="baseline" class="baselineSummary"></div>
+        </div>
+
+        <div class="panelSection">
+          <div class="sectionLabel"><span>02</span><h2>Choose a mutation</h2></div>
+          <p>Preset tests change one meaningful payment term. The referee still keeps the original offer.</p>
+          <div id="researchTests" class="attackgrid"></div>
+          <div class="mutationPreview" aria-live="polite">
+            <div class="mutationPreviewHeader"><span>RECEIVED OFFER / DIFFERENCE</span><strong id="mutationCount">No changes</strong></div>
+            <div id="mutationDetails" class="mutationDetails">The original merchant offer is selected.</div>
+          </div>
+        </div>
+
+        <div class="panelSection">
+          <div class="sectionLabel"><span>03</span><h2>Submit to the referee</h2></div>
+          <details class="advancedBox"><summary>Manual field editing</summary><p class="formnote">Amount is USDC. Up to six decimal places are converted exactly to atomic units.</p>
+            <div class="fields">
+              <div class="field"><label for="amount">Amount · USDC</label><input id="amount" inputmode="decimal" placeholder="0.05"></div>
+              <div class="field"><label for="payTo">Recipient</label><input id="payTo" spellcheck="false" placeholder="0x…"></div>
+              <div class="field"><label for="network">Network</label><input id="network" spellcheck="false"></div>
+              <div class="field"><label for="asset">Asset</label><input id="asset" spellcheck="false"></div>
+              <div class="field full"><label for="resource">Resource URL</label><input id="resource" spellcheck="false"></div>
+              <div class="field"><label for="scheme">Scheme</label><input id="scheme" spellcheck="false"></div>
+              <div class="field"><label for="timeout">Timeout · seconds</label><input id="timeout" inputmode="numeric"></div>
+              <div class="field"><label for="paymentFlow">Payment flow</label><input id="paymentFlow" spellcheck="false"></div>
+              <div class="field"><label for="transferMethod">Transfer method</label><input id="transferMethod" spellcheck="false"></div>
+            </div>
+          </details>
+          <div class="fields" style="margin-top:18px">
+            <div class="field"><label for="attacker">Operator</label><input id="attacker" value="Red Operator"></div>
+            <div class="field"><label for="label">Attack label</label><input id="label" value="Custom mutation"></div>
+            <div class="field full"><label for="note">Hypothesis</label><textarea id="note" placeholder="Which signed term should stop this?"></textarea></div>
+          </div>
+          <div class="actions"><button id="submit" class="btn red" type="button">Evaluate with referee</button><button id="resetFields" class="btn secondary" type="button">Restore baseline</button></div>
+        </div>
+      </section>
+
+      <aside class="panel darkpanel" aria-label="Referee result">
+        <div class="panelhead"><div><h2>Latest referee result</h2><p class="subtle">The expected result comes from the original offer.</p></div><span class="tag attack">SERVER HELD</span></div>
+        <div id="verdict" class="decision" aria-live="polite"><div class="big">READY</div><p>Choose a mutation and evaluate it.</p></div>
+        <div class="asideDivider"></div>
+        <h3>Recipient relationship</h3>
+        <p id="closure" class="subtle">The optional loop graph is synthetic demo data.</p>
+        <div class="minirow twoMetrics"><div class="metric"><span>Attack block</span><b id="abr">—</b></div><div class="metric"><span>Valid pass</span><b id="lpr">—</b></div></div>
+        <div class="asideDivider"></div>
+        <h3>Controlled 500 × 500 sweep</h3>
+        <p class="subtle">Reproducible local evaluation; Blue token required.</p>
+        <div class="field"><label for="adminToken">Blue admin token</label><input id="adminToken" type="password" autocomplete="off"></div>
+        <div class="actions"><button id="runFuzz" class="btn secondary" type="button">Run controlled fuzz</button></div>
+        <p id="fuzzReport" class="subtle">Seed 402 · 500 mutations and 500 valid controls.</p>
+      </aside>
+    </div>
+
+    <section class="panel" style="margin-top:18px"><div class="panelhead"><h2>Live rounds</h2><a href="/judge" class="btn secondary">Open judge view ↗</a></div><div id="feed" class="feed"></div></section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script type="module" src="/red.js"></script>
+</body>
+</html>

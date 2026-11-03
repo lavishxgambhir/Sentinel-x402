@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a09">
+  <meta name="description" content="KCC Sentinel protects x402 payment authority before an AI agent can authorize a wallet payment.">
+  <title>Team KCC — Sentinel</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body class="landing kcc-dark">
+  <main class="kcc-stage">
+    <section class="kcc-shell" aria-labelledby="hero-title">
+      <nav class="kcc-nav" aria-label="Main navigation">
+        <a class="kcc-brand" href="/" aria-label="Team KCC home"><span class="kcc-mark" aria-hidden="true">K</span><span>TEAM KCC</span><em>/</em><span class="kcc-product">SENTINEL</span></a>
+        <div class="kcc-links"><a href="#security">Security</a><a href="#arena">Arena</a><a href="/judge">Judge</a><a href="https://github.com/Anubhav-2005/kcc-x402-sentinel">GitHub</a></div>
+        <a class="kcc-navcta" href="/red">Open console <span aria-hidden="true">↗</span></a>
+      </nav>
+      <div class="kcc-hero">
+        <div class="kcc-copy">
+          <span class="kcc-kicker">x402 payment authority / dry-run</span>
+          <h1 id="hero-title">Secure every<br>agent payment<br><span>before it signs.</span></h1>
+          <p>Sentinel compares a merchant's payment request with the buyer's signed intent. If the terms change, the wallet stays closed.</p>
+          <div class="kcc-actions"><a class="kcc-button" href="/red">Explore Red / Blue <span aria-hidden="true">→</span></a><a class="kcc-outline" href="/judge">View evidence</a></div>
+        </div>
+        <div class="kcc-art" aria-label="Illustration of a signed payment protected by Sentinel">
+          <div class="art-halo"></div><div class="art-card art-card-back"><span>MERCHANT REQUEST</span><b>HTTP 402</b><small>amount · payee · timeout</small></div>
+          <div class="art-card art-card-front"><div class="art-top"><span class="shield-icon">✓</span><span>SENTINEL</span></div><strong>Payment<br>authority</strong><div class="art-rule"></div><small>SIGNED INTENT VERIFIED</small></div>
+          <div class="art-ring"><span>AUTHORIZED</span></div><div class="art-coin coin-one">$</div><div class="art-coin coin-two">↗</div><div class="art-coin coin-three">✓</div><div class="art-base"><span>INTENT BOUND</span><b>0x402</b></div>
+        </div>
+      </div>
+      <div class="kcc-trust"><span>Built for controlled x402 security evaluation</span><div><b>SIGNED INTENT</b><b>ONE-USE PERMITS</b><b>INDEPENDENT REFEREE</b><b>NO FUNDS BROADCAST</b></div></div>
+    </section>
+    <section id="security" class="kcc-security">
+      <div class="kcc-security-copy"><span class="kcc-kicker">PAYMENT BOUNDARY</span><h2>A request cannot define its own permission.</h2><p>The merchant can ask for payment. Only the buyer can authorize the exact amount, recipient, resource, network, and timeout.</p></div>
+      <div class="kcc-stat-grid"><div><b>01</b><h3>Read the request</h3><p>Capture the actual x402 terms.</p></div><div><b>02</b><h3>Verify intent</h3><p>Match each term with a signed permit.</p></div><div><b>03</b><h3>Guard the signer</h3><p>Block changes before authorization.</p></div><div class="kcc-live"><span>LIVE ARENA</span><strong id="homeRounds">—</strong><small>observed rounds</small></div></div>
+    </section>
+    <section id="arena" class="kcc-arena">
+      <div><span class="kcc-kicker">RED / BLUE / JUDGE</span><h2>Attack the request.<br><span>Verify the evidence.</span></h2></div>
+      <div class="kcc-route-list"><a href="/red"><span>01</span><b>Red console</b><small>Mutate a payment term</small><i>↗</i></a><a href="/blue"><span>02</span><b>Blue console</b><small>Set wallet authority</small><i>↗</i></a><a href="/judge"><span>03</span><b>Judge view</b><small>Inspect the original, permit, and verdict</small><i>↗</i></a></div>
+    </section>
+  </main>
+  <footer class="kcc-footer"><span>© Team KCC · Sentinel is a dry-run security prototype.</span><a href="https://github.com/Anubhav-2005/kcc-x402-sentinel">View source ↗</a></footer>
+  <script type="module" src="/landing.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "framework": null,
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/red", "destination": "/red.html" },
+    { "source": "/blue", "destination": "/blue.html" },
+    { "source": "/judge", "destination": "/judge.html" },
+    { "source": "/api/:path*", "destination": "/api/index?sentinelPath=/api/:path*" },
+    { "source": "/merchant/:path*", "destination": "/api/index?sentinelPath=/merchant/:path*" }
+  ]
+}

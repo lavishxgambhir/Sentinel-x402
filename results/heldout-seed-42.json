@@ -1,0 +1,232 @@
+{
+  "suite": "HELD-OUT RED TEAM",
+  "seed": 42,
+  "generatedAt": "2026-11-01T01:56:20.995Z",
+  "status": "PASS",
+  "passed": true,
+  "metrics": {
+    "attacks": 300,
+    "legitimate": 300,
+    "truePositive": 300,
+    "trueNegative": 300,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "attackContainmentRate": 100,
+    "bypassRate": 0,
+    "legitimatePassRate": 100,
+    "falsePositiveRate": 0,
+    "overallAccuracy": 100,
+    "precision": 100,
+    "attackRecall": 100,
+    "specificity": 100,
+    "f1Score": 100,
+    "observedBypassUpperBound95": 1
+  },
+  "criticalBypasses": [],
+  "severity": {
+    "CRITICAL": {
+      "total": 227,
+      "failures": 0
+    },
+    "HIGH": {
+      "total": 53,
+      "failures": 0
+    },
+    "MEDIUM": {
+      "total": 15,
+      "failures": 0
+    },
+    "LOW / QUALITY": {
+      "total": 305,
+      "failures": 0
+    }
+  },
+  "statefulChecks": [
+    {
+      "id": "stateful-permit-replay",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "PERMIT_USES"
+      ]
+    },
+    {
+      "id": "stateful-approval-reuse-before-settlement",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "PERMIT_USES"
+      ]
+    },
+    {
+      "id": "stateful-fake-time",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "UNTRUSTED_TIMESTAMP"
+      ]
+    },
+    {
+      "id": "stateful-nonce-replay",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "REPLAY",
+        "RESERVATION"
+      ]
+    },
+    {
+      "id": "stateful-invalid-signature",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "PERMIT_SIGNATURE"
+      ]
+    },
+    {
+      "id": "stateful-first-permit-use",
+      "expected": "allow",
+      "actual": "allow",
+      "passed": true,
+      "reasonCodes": []
+    },
+    {
+      "id": "stateful-challenge-replay",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "CHALLENGE_REPLAY"
+      ]
+    },
+    {
+      "id": "stateful-budget-drain",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "BUDGET"
+      ]
+    },
+    {
+      "id": "stateful-budget-exact-limit",
+      "expected": "allow",
+      "actual": "allow",
+      "passed": true,
+      "reasonCodes": []
+    },
+    {
+      "id": "stateful-budget-over-by-one",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "BUDGET"
+      ]
+    },
+    {
+      "id": "stateful-permit-race",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "PERMIT_USES"
+      ]
+    },
+    {
+      "id": "stateful-stale-policy",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "POLICY_DIGEST"
+      ]
+    },
+    {
+      "id": "stateful-post-approval",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "RECIPIENT"
+      ]
+    },
+    {
+      "id": "stateful-permit-before-expiry",
+      "expected": "allow",
+      "actual": "allow",
+      "passed": true,
+      "reasonCodes": []
+    },
+    {
+      "id": "stateful-permit-after-expiry",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "PERMIT_SIGNATURE"
+      ]
+    }
+  ],
+  "securityChecks": [
+    {
+      "id": "malformed-prototype-network",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "MALFORMED_REQUIREMENTS"
+      ]
+    },
+    {
+      "id": "malformed-recipient-object",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "MALFORMED_REQUIREMENTS"
+      ]
+    },
+    {
+      "id": "malformed-offer-array",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "MALFORMED_REQUIREMENTS"
+      ]
+    },
+    {
+      "id": "stateful-approval-reuse-before-settlement",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "PERMIT_USES"
+      ]
+    },
+    {
+      "id": "stateful-fake-time",
+      "expected": "block",
+      "actual": "block",
+      "passed": true,
+      "reasonCodes": [
+        "UNTRUSTED_TIMESTAMP"
+      ]
+    }
+  ],
+  "failures": [],
+  "thresholds": {
+    "attackContainmentRate": ">= 95%",
+    "legitimatePassRate": ">= 97%",
+    "falsePositiveRate": "<= 3%",
+    "bypassRate": "<= 5%",
+    "criticalIntentBypasses": "0"
+  },
+  "statisticalNote": "0/300 observed attack bypasses; approximate controlled-sample 95% upper bound is 1% (rule of three), not a real-world guarantee."
+}

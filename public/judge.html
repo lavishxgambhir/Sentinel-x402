@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a09">
+  <title>Judge view — KCC Sentinel</title>
+  <link rel="stylesheet" href="/app.css">
+  <link rel="stylesheet" href="/console.css">
+</head>
+<body class="judge kcc-console">
+  <nav class="nav" aria-label="Main navigation">
+    <div class="navin">
+      <a class="brand" href="/" aria-label="KCC Sentinel home"><span class="mark" aria-hidden="true"></span><span>KCC</span><em>/</em><span class="brandProduct">Sentinel</span></a>
+      <div class="navlinks"><a href="/red">Red</a><a href="/blue">Blue</a><a href="/judge" aria-current="page">Judge</a><a href="/api/audit/export">Export audit</a></div>
+      <span class="navmeta">Referee / <span id="connectionState" class="connectionState" data-state="connecting">Connecting</span></span>
+    </div>
+  </nav>
+
+  <main class="judgewrap">
+    <div class="judgeTop">
+      <div><span class="researchEyebrow">Judge / Independent comparison</span><h1>Read the evidence.</h1><p>One server-held original. One received payment. A signed permit, guard decision, and referee verdict.</p></div>
+      <div class="scoreline" aria-label="Arena score">
+        <div class="teamscore"><small>Blue · correct</small><b id="blueScore">0</b></div>
+        <span class="versus">VS</span>
+        <div class="teamscore redscore"><small>Red · wins</small><b id="redScore">0</b></div>
+      </div>
+    </div>
+
+    <div id="trainingModeNotice" class="trainingNotice">Training fixture: secure permit binding is active.</div>
+
+    <section class="roundhero" aria-label="Latest round evidence">
+      <div class="roundmeta"><span>ROUND <b id="round">0</b></span><span id="clock">Waiting for first challenge</span></div>
+      <div class="roundHeader">
+        <div><span id="roundType" class="researchEyebrow">READY</span><h2 id="headline">A payment is judged against the original offer.</h2></div>
+        <div id="decision" class="judgeDecision" aria-live="polite"><div><div class="word">READY</div><div class="subtle">No arena round has been evaluated.</div></div><div class="pill">Independent referee armed</div></div>
+      </div>
+      <div class="outcomeStrip">
+        <div><span>Referee expects</span><b id="expected">—</b></div>
+        <div><span>Sentinel did</span><b id="actual">—</b></div>
+        <div><span>Referee says</span><b id="refResult">—</b></div>
+      </div>
+      <div class="judgegrid">
+        <div class="judgecard">
+          <h3>Original offer → received offer</h3>
+          <div class="diff"><div class="diffbox"><h4>SERVER ORIGINAL</h4><div id="original">No round yet.</div></div><div class="diffbox"><h4>RED SUBMISSION</h4><div id="received">No round yet.</div></div></div>
+        </div>
+        <div class="judgecard">
+          <h3>Signed permit</h3>
+          <div id="permit" class="subtle">Permit details appear with the first round.</div>
+          <h3 style="margin-top:20px">Decision evidence</h3>
+          <div id="reason" class="subtle">Waiting for evidence.</div>
+        </div>
+      </div>
+      <div class="judgecard" style="margin-top:12px">
+        <div class="panelhead"><div><h3>Execution trace</h3><p>Request → guard → simulated wallet → dry-run settlement → recipient check.</p></div><span class="tag legit">DRY RUN</span></div>
+        <div id="trace" class="stageTrace"><div class="subtle">Waiting for a round…</div></div>
+      </div>
+    </section>
+
+    <div class="judgeMetrics" aria-label="Arena metrics">
+      <div class="jmetric"><span>Attack block rate</span><b id="abr">—</b></div>
+      <div class="jmetric"><span>Legitimate pass rate</span><b id="lpr">—</b></div>
+      <div class="jmetric"><span>True bypasses</span><b id="bypasses">0</b></div>
+      <div class="jmetric"><span>False positives</span><b id="fp">0</b></div>
+      <div class="jmetric"><span>Unauthorized value settled</span><b id="unauthorized">$0.00</b></div>
+    </div>
+    <div class="researchFooter"><b>Scope</b><span>All arena rounds are dry-run evaluations. A simulated signer stage may open, but no blockchain transaction is broadcast.</span></div>
+
+    <section class="panel researchEvaluation" aria-labelledby="evaluationHeading">
+      <div class="panelhead">
+        <div><span class="researchEyebrow">Research evaluation</span><h2 id="evaluationHeading">Known cases and held-out cases</h2><p>Run each suite with the Blue admin token. These are measured results, not a universal security proof.</p></div>
+        <div class="evaluationActions"><button id="showKnown" class="btn secondary" type="button">Known regression</button><button id="showHeldout" class="btn secondary" type="button">Held-out Red</button><button id="showMulti" class="btn secondary" type="button">Multi-seed</button><button id="showFailures" class="btn secondary" type="button">Failure analysis</button></div>
+      </div>
+      <div class="evaluationSummary">
+        <div class="evaluationSuiteCard"><small>KNOWN REGRESSION</small><b id="knownSuiteStatus">NOT RUN</b><span id="knownSuiteNumbers">Run the known suite to see its result.</span></div>
+        <div class="evaluationSuiteCard"><small>HELD-OUT RED TEAM</small><b id="heldoutSuiteStatus">NOT RUN</b><span id="heldoutSuiteNumbers">Run the held-out suite to see its result.</span></div>
+      </div>
+      <div class="field evaluationToken"><label for="evaluationToken">Blue admin token</label><input id="evaluationToken" type="password" autocomplete="off" placeholder="Required for benchmark runs"></div>
+      <div class="evaluationActions"><button id="runKnown" class="btn primary" type="button">Run known suite</button><button id="runHeldout" class="btn primary" type="button">Run held-out suite</button><button id="runMulti" class="btn primary" type="button">Run multi-seed</button></div>
+      <p id="evaluationStatus" class="subtle">No benchmark run in this session.</p>
+      <div id="evaluationPanel" class="evaluationPanel"></div>
+    </section>
+  </main>
+  <script type="module" src="/judge.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "x402Version": 2,
+  "error": "PAYMENT-SIGNATURE header is required",
+  "resource": {
+    "url": "https://api.safe.test/premium-data",
+    "description": "Premium market data",
+    "mimeType": "application/json"
+  },
+  "accepts": [
+    {
+      "scheme": "exact",
+      "network": "eip155:84532",
+      "amount": "50000",
+      "asset": "0x2222222222222222222222222222222222222222",
+      "payTo": "0x1111111111111111111111111111111111111111",
+      "maxTimeoutSeconds": 60,
+      "extra": { "name": "USDC", "version": "2" }
+    }
+  ],
+  "extensions": {}
+}

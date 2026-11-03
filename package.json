@@ -1,0 +1,23 @@
+{
+  "name": "x402-sentinel",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Signed-intent guard and Red/Blue evaluation for x402 payments",
+  "scripts": {
+    "start": "node src/app/server.mjs",
+    "test": "node --test",
+    "bench": "node src/cli/bench.mjs",
+    "fuzz": "node src/cli/fuzz.mjs",
+    "heldout": "node src/cli/heldout.mjs",
+    "heldout:multi": "node src/cli/heldout.mjs --multi",
+    "heldout:compare": "node src/cli/compare-results.mjs",
+    "attack-lab": "node src/cli/redteam.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.2.0"
+  }
+}
